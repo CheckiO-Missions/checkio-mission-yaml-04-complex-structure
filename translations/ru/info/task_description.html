@@ -1,0 +1,177 @@
+<!-- Describe task in general -->
+
+<p>4ая задача в серии миссий о формате YAML будет посвещена сложной струкруте.</p>
+
+<p>Элементом массива может быть другой массив.</p>
+
+<pre>
+- Alex
+-
+  - odessa
+  - dnipro
+- Li
+</pre>
+
+<pre>
+[
+  "Alex", 
+  [
+    "odessa", 
+    "dnipro"
+  ], 
+  "Li"
+]
+</pre>
+
+<p>Элементом массива может быть словарь</p>
+
+<pre>
+- 67
+-
+  name: Irv
+  game: Mario
+-
+- 56
+
+</pre>
+
+<pre>
+[
+  67, 
+  {
+    "game": "Mario", 
+    "name": "Irv"
+  }, 
+  null, 
+  56
+]
+</pre>
+
+<p>Элементом словаря может быть другой словарь</p>
+
+<pre>
+name: Alex
+study:
+  type: school
+  number: 78
+age: 14
+</pre>
+
+<pre>
+{
+  "age": 14, 
+  "study": {
+    "type": "school", 
+    "number": 78
+  }, 
+  "name": "Alex"
+}
+</pre>
+
+<p>Элементом словаря может быть массив</p>
+
+<pre>
+name: Alex
+study:
+  - 89
+  - 89
+  - "Hell"
+age: 14
+</pre>
+
+<pre>
+{
+  "age": 14, 
+  "study": [
+    89, 
+    89, 
+    "Hell"
+  ], 
+  "name": "Alex"
+}
+</pre>
+
+<p>Ну и конечно же данные могут иметь более одного уровня вложености</p>
+
+<pre>
+name: Alex
+study:
+  -
+    type: school
+    num: 89
+  -
+    type: school
+    num: 12
+age: 14
+</pre>
+<pre>
+{
+  "age": 14, 
+  "study": [
+    {
+      "num": 89, 
+      "type": "school"
+    }, 
+    {
+      "num": 12, 
+      "type": "school"
+    }
+  ], 
+  "name": "Alex"
+}
+</pre>
+
+<!-- Explain input and output values -->
+<p>
+    <strong>Входные данные: </strong> Строка в формате 
+</p>
+
+<p>
+    <strong>Выходные данные: </strong> Объект. 
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Пример:</strong>
+    </p>
+
+{% if interpreter.slug == "js-node" %}
+<pre class="brush: javascript">yaml('- write some
+- "Alex Chii"
+- 89') == ['write some', 'Alex Chii', 89]
+yaml('# comment
+'
+ '- write some # after
+'
+ '# one mor
+'
+ '- "Alex Chii #sir "
+'
+ '- 89 #bl') == ['write some', 'Alex Chii #sir ', 89]
+</pre>
+{% else %}
+<pre class="brush: python">yaml('- write some
+- "Alex Chii"
+- 89') == ['write some', 'Alex Chii', 89]
+yaml('# comment
+'
+ '- write some # after
+'
+ '# one mor
+'
+ '- "Alex Chii #sir "
+'
+ '- 89 #bl') == ['write some', 'Alex Chii #sir ', 89]
+</pre>
+{% endif %}
+</div>
+
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<p>
+    <strong>Предварительное условие:</strong>
+    <i>Используется стандарт YAML версии 1.2</i>
+</p>

@@ -1,0 +1,26 @@
+"use strict";
+
+function yaml(a) {
+    // your code here
+    return undefined;
+}
+
+var assert = require('assert');
+
+if (!global.is_checking) {
+    console.log('Example:');
+    console.log(yaml('- write some\n- "Alex Chii"\n- 89'));
+
+    // These "asserts" are used for self-checking
+    assert.deepEqual(yaml('- write some\n- "Alex Chii"\n- 89'), ['write some', 'Alex Chii', 89]);
+    assert.deepEqual(yaml('# comment\n'
+ '- write some # after\n'
+ '# one mor\n'
+ '- "Alex Chii #sir "\n'
+ '- 89 #bl'), ['write some', 'Alex Chii #sir ', 89]);
+    assert.deepEqual(yaml('- 1\n- 2\n- 3\n\n- 4\n\n\n\n- 5'), [1, 2, 3, 4, 5]);
+    assert.deepEqual(yaml('-\n-\n-\n- 7'), [Null, Null, Null, 7]);
+
+    console.log("Coding complete? Click 'Check' to earn cool rewards!");
+}
+    
