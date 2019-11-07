@@ -38,7 +38,7 @@ TESTS = {
     "game": "Mario", 
     "name": "Irv"
   }, 
-  null, 
+  None, 
   56
 ]
       },
