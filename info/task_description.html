@@ -138,32 +138,36 @@ age: 14
     </p>
 
 {% if interpreter.slug == "js-node" %}
-<pre class="brush: javascript">yaml('- write some
-- "Alex Chii"
-- 89') == ['write some', 'Alex Chii', 89]
-yaml('# comment
-'
- '- write some # after
-'
- '# one mor
-'
- '- "Alex Chii #sir "
-'
- '- 89 #bl') == ['write some', 'Alex Chii #sir ', 89]
+<pre class="brush: javascript">yaml('- Alex\n'
++ '-\n'
++ '  - odessa\n'
++ '  - dnipro\n'
++ '- Li') == ['Alex', ['odessa', 'dnipro'], 'Li']
+yaml('- 67\n'
++ '-\n'
++ '  name: Irv\n'
++ '  game: Mario\n'
++ '-\n'
++ '- 56') == [67,
+ {'game': 'Mario', 'name': 'Irv'},
+ Null,
+ 56]
 </pre>
 {% else %}
-<pre class="brush: python">yaml('- write some
-- "Alex Chii"
-- 89') == ['write some', 'Alex Chii', 89]
-yaml('# comment
-'
- '- write some # after
-'
- '# one mor
-'
- '- "Alex Chii #sir "
-'
- '- 89 #bl') == ['write some', 'Alex Chii #sir ', 89]
+<pre class="brush: python">yaml('- Alex\n'
+ '-\n'
+ '  - odessa\n'
+ '  - dnipro\n'
+ '- Li') == ['Alex', ['odessa', 'dnipro'], 'Li']
+yaml('- 67\n'
+ '-\n'
+ '  name: Irv\n'
+ '  game: Mario\n'
+ '-\n'
+ '- 56') == [67,
+ {'game': 'Mario', 'name': 'Irv'},
+ None,
+ 56]
 </pre>
 {% endif %}
 </div>

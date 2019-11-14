@@ -9,17 +9,73 @@ var assert = require('assert');
 
 if (!global.is_checking) {
     console.log('Example:');
-    console.log(yaml('- write some\n- "Alex Chii"\n- 89'));
+    console.log(yaml('- Alex\n'
+ + '-\n'
+ + '  - odessa\n'
+ + '  - dnipro\n'
+ + '- Li'));
 
     // These "asserts" are used for self-checking
-    assert.deepEqual(yaml('- write some\n- "Alex Chii"\n- 89'), ['write some', 'Alex Chii', 89]);
-    assert.deepEqual(yaml('# comment\n'
- '- write some # after\n'
- '# one mor\n'
- '- "Alex Chii #sir "\n'
- '- 89 #bl'), ['write some', 'Alex Chii #sir ', 89]);
-    assert.deepEqual(yaml('- 1\n- 2\n- 3\n\n- 4\n\n\n\n- 5'), [1, 2, 3, 4, 5]);
-    assert.deepEqual(yaml('-\n-\n-\n- 7'), [Null, Null, Null, 7]);
+    assert.deepEqual(yaml('- Alex\n'
+ + '-\n'
+ + '  - odessa\n'
+ + '  - dnipro\n'
+ + '- Li'), ['Alex', ['odessa', 'dnipro'], 'Li']);
+    assert.deepEqual(yaml('- 67\n'
+ + '-\n'
+ + '  name: Irv\n'
+ + '  game: Mario\n'
+ + '-\n'
+ + '- 56'), [67,
+ {'game': 'Mario', 'name': 'Irv'},
+ Null,
+ 56]);
+    assert.deepEqual(yaml('name: Alex\n'
+ + 'study:\n'
+ + '  type: school\n'
+ + '  number: 78\n'
+ + 'age: 14'), {'age': 14,
+ 'name': 'Alex',
+ 'study': {'number': 78,
+           'type': 'school'}});
+    assert.deepEqual(yaml('name: Alex\n'
+ + 'study:\n'
+ + '  - 89\n'
+ + '  - 89\n'
+ + '  - "Hell"\n'
+ + 'age: 14'), {'age': 14,
+ 'name': 'Alex',
+ 'study': [89, 89, 'Hell']});
+    assert.deepEqual(yaml('name: Alex\n'
+ + 'study:\n'
+ + '  -\n'
+ + '    type: school\n'
+ + '    num: 89\n'
+ + '  -\n'
+ + '    type: school\n'
+ + '    num: 12\n'
+ + 'age: 14'), {'age': 14,
+ 'name': 'Alex',
+ 'study': [{'num': 89,
+            'type': 'school'},
+           {'num': 12,
+            'type': 'school'}]});
+    assert.deepEqual(yaml('name: Alex\n'
+ + 'study:\n'
+ + '  -\n'
+ + '    type: school\n'
+ + '    nums:\n'
+ + '      - 12\n'
+ + '      - 67\n'
+ + '  -\n'
+ + '    type: school\n'
+ + '    num: 12\n'
+ + 'age: 14'), {'age': 14,
+ 'name': 'Alex',
+ 'study': [{'nums': [12, 67],
+            'type': 'school'},
+           {'num': 12,
+            'type': 'school'}]});
 
     console.log("Coding complete? Click 'Check' to earn cool rewards!");
 }

@@ -5,15 +5,71 @@ def yaml(a):
 
 if __name__ == '__main__':
     print("Example:")
-    print(yaml('- write some\n- "Alex Chii"\n- 89'))
+    print(yaml('- Alex\n'
+ '-\n'
+ '  - odessa\n'
+ '  - dnipro\n'
+ '- Li'))
 
     # These "asserts" are used for self-checking and not for an auto-testing
-    assert yaml('- write some\n- "Alex Chii"\n- 89') == ['write some', 'Alex Chii', 89]
-    assert yaml('# comment\n'
- '- write some # after\n'
- '# one mor\n'
- '- "Alex Chii #sir "\n'
- '- 89 #bl') == ['write some', 'Alex Chii #sir ', 89]
-    assert yaml('- 1\n- 2\n- 3\n\n- 4\n\n\n\n- 5') == [1, 2, 3, 4, 5]
-    assert yaml('-\n-\n-\n- 7') == [None, None, None, 7]
+    assert yaml('- Alex\n'
+ '-\n'
+ '  - odessa\n'
+ '  - dnipro\n'
+ '- Li') == ['Alex', ['odessa', 'dnipro'], 'Li']
+    assert yaml('- 67\n'
+ '-\n'
+ '  name: Irv\n'
+ '  game: Mario\n'
+ '-\n'
+ '- 56') == [67,
+ {'game': 'Mario', 'name': 'Irv'},
+ None,
+ 56]
+    assert yaml('name: Alex\n'
+ 'study:\n'
+ '  type: school\n'
+ '  number: 78\n'
+ 'age: 14') == {'age': 14,
+ 'name': 'Alex',
+ 'study': {'number': 78,
+           'type': 'school'}}
+    assert yaml('name: Alex\n'
+ 'study:\n'
+ '  - 89\n'
+ '  - 89\n'
+ '  - "Hell"\n'
+ 'age: 14') == {'age': 14,
+ 'name': 'Alex',
+ 'study': [89, 89, 'Hell']}
+    assert yaml('name: Alex\n'
+ 'study:\n'
+ '  -\n'
+ '    type: school\n'
+ '    num: 89\n'
+ '  -\n'
+ '    type: school\n'
+ '    num: 12\n'
+ 'age: 14') == {'age': 14,
+ 'name': 'Alex',
+ 'study': [{'num': 89,
+            'type': 'school'},
+           {'num': 12,
+            'type': 'school'}]}
+    assert yaml('name: Alex\n'
+ 'study:\n'
+ '  -\n'
+ '    type: school\n'
+ '    nums:\n'
+ '      - 12\n'
+ '      - 67\n'
+ '  -\n'
+ '    type: school\n'
+ '    num: 12\n'
+ 'age: 14') == {'age': 14,
+ 'name': 'Alex',
+ 'study': [{'nums': [12, 67],
+            'type': 'school'},
+           {'num': 12,
+            'type': 'school'}]}
     print("Coding complete? Click 'Check' to earn cool rewards!")
