@@ -1,6 +1,6 @@
 <!-- Describe task in general -->
 
-<p>4-я задача в серии миссий о формате YAML будет посвящена сложной структуре.</p>
+<p>Четверта місія в серії про парсинг YAML буде присвячений складній структурі.</p>
 
 <table>
   <tr>
@@ -9,7 +9,7 @@
   </tr>
   <tr>
     <td colspan="2">
-      <p>Элементом {% if is_js %}массива{% else %}списка{% endif %} может быть другой {% if is_js %}массив{% else %}список{% endif %}.</p>
+      <p>Елементом {% if is_js %}масиву{% else %}списку{% endif %} може бути інший {% if is_js %}масив{% else %}список{% endif %}.</p>
     </td>
   </tr>
   <tr>
@@ -37,7 +37,7 @@
   </tr>
   <tr>
     <td colspan="2">
-      <p>Элементом {% if is_js %}массива{% else %}списка{% endif %} может быть словарь.</p>
+      <p>Словник також може бути елементом {% if is_js %}масиву{% else %}списку{% endif %}.</p>
     </td>
   </tr>
   <tr>
@@ -67,7 +67,7 @@
   </tr>
   <tr>
     <td colspan="2">
-      <p>Элементом словаря может быть другой словарь.</p>
+      <p>Елементом словника може бути інший словник.</p>
     </td>
   </tr>
   <tr>
@@ -95,7 +95,7 @@
   </tr>
   <tr>
     <td colspan="2">
-      <p>Элементом словаря может быть {% if is_js %}массив{% else %}список{% endif %}.</p>
+      <p>{% if is_js %}Масив{% else %}Список{% endif %} також може бути елементом словника.</p>
     </td>
   </tr>
   <tr>
@@ -125,7 +125,7 @@
   </tr>
   <tr>
     <td colspan="2">
-      <p>Ну и конечно же данные могут иметь более одного уровня вложенности.</p>
+      <p>І, звичайно, дані можуть мати більше одного рівня вкладеності.</p>
     </td>
   </tr>
   <tr>
@@ -163,27 +163,26 @@
   </tr>
 </table>
 
-
 <!-- Explain input and output values -->
 <p>
-    <strong>Входные данные:</strong> Строка в формате 
+    <strong>Вхідні дані:</strong> Форматований рядок. 
 </p>
 
 <p>
-    <strong>Выходные данные:</strong> Объект. 
+    <strong>Вихідні дані:</strong> об'єкт ({% if is_js %}масив/словник{% else %}список/словник{% endif %}). 
 </p>
-
 <!-- Give some usage examples -->
 <div class="for_info_only">
     <p>
-        <strong>Примеры:</strong>
+        <strong>Приклади:</strong>
     </p>
   <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
 
+
 <!-- Here you can explain some constraints for input-->
 <!-- The section is optional -->
 <p>
-    <strong>Предварительное условие:</strong>
-    <i>Используется стандарт YAML версии 1.2</i>
+    <strong>Передумова:</strong>
+    <i>Використовується стандарт YAML 1.2 .</i>
 </p>
