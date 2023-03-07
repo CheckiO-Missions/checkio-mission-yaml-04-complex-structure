@@ -2,174 +2,181 @@
 
 <p>The 4th task in the series of missions about the YAML format will be devoted to a complex structure.</p>
 
-<p>An array element can be another array.</p>
-
-<pre>
-- Alex
--
-  - odessa
-  - dnipro
-- Li
-</pre>
-
-<pre>
-[
-  "Alex", 
-  [
-    "odessa", 
-    "dnipro"
-  ], 
-  "Li"
-]
-</pre>
-
-<p>A dictionary can also be an element of an array.</p>
-
-<pre>
-- 67
--
-  name: Irv
-  game: Mario
--
-- 56
-
-</pre>
-
-<pre>
-[
-  67, 
-  {
-    "game": "Mario", 
-    "name": "Irv"
-  }, 
-  null, 
-  56
-]
-</pre>
-
-<p>A dictionary element can be another dictionary.</p>
-
-<pre>
-name: Alex
-study:
-  type: school
-  number: 78
-age: 14
-</pre>
-
-<pre>
-{
-  "age": 14, 
-  "study": {
-    "type": "school", 
-    "number": 78
-  }, 
-  "name": "Alex"
-}
-</pre>
-
-<p>An array can also be an element of a dictionary.</p>
-
-<pre>
-name: Alex
-study:
-  - 89
-  - 89
-  - "Hell"
-age: 14
-</pre>
-
-<pre>
-{
-  "age": 14, 
-  "study": [
-    89, 
-    89, 
-    "Hell"
-  ], 
-  "name": "Alex"
-}
-</pre>
-
-<p>And, of course, data can have more than one nesting level.</p>
-
-<pre>
-name: Alex
-study:
-  -
-    type: school
-    num: 89
-  -
-    type: school
-    num: 12
-age: 14
-</pre>
-<pre>
-{
-  "age": 14, 
-  "study": [
-    {
-      "num": 89, 
-      "type": "school"
-    }, 
-    {
-      "num": 12, 
-      "type": "school"
-    }
-  ], 
-  "name": "Alex"
-}
-</pre>
+<table>
+  <tr>
+    <th>YAML</th>
+    <th>Python/TypeScript</th>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p>{% if is_js %}An array{% else %}A list{% endif %} element can be another {% if is_js %}array{% else %}list{% endif %}.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>
+        - Alex
+        -
+          - odessa
+          - dnipro
+        - Li
+      </pre>
+    </td>
+    <td>
+      <pre class="brush: python">
+        [
+          "Alex", 
+          [
+            "odessa", 
+            "dnipro"
+          ], 
+          "Li"
+        ]
+        </pre>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p>{% if is_js %}An object{% else %}A dictionary{% endif %} can also be an element of an {% if is_js %}array{% else %}list{% endif %}.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>
+        - 67
+        -
+          name: Irv
+          game: Mario
+        -
+        - 56
+      </pre>
+    </td>
+    <td>
+      <pre class="brush: python">
+        [
+          67, 
+          {
+            "game": "Mario", 
+            "name": "Irv"
+          }, 
+          None/null, 
+          56
+        ]
+      </pre>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p>{% if is_js %}An object{% else %}A dictionary{% endif %} element can be another {% if is_js %}object{% else %}dictionary{% endif %}.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>
+        name: Alex
+        study:
+          type: school
+          number: 78
+        age: 14
+      </pre>
+    </td>
+    <td>
+      <pre class="brush: python">
+        {
+          "age": 14, 
+          "study": {
+            "type": "school", 
+            "number": 78
+          }, 
+          "name": "Alex"
+        }
+      </pre>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p>{% if is_js %}An array{% else %}A list{% endif %} can also be an element of {% if is_js %}object{% else %}dictionary{% endif %}.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>
+        name: Alex
+        study:
+          - 89
+          - 89
+          - "Hell"
+        age: 14
+      </pre>
+    </td>
+    <td>
+      <pre class="brush: python">
+        {
+          "age": 14, 
+          "study": [
+            89, 
+            89, 
+            "Hell"
+          ], 
+          "name": "Alex"
+        }
+      </pre>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p>And, of course, data can have more than one nesting level.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>
+        name: Alex
+        study:
+          -
+            type: school
+            num: 89
+          -
+            type: school
+            num: 12
+        age: 14
+      </pre>
+    </td>
+    <td>
+      <pre class="brush: python">
+        {
+          "age": 14, 
+          "study": [
+            {
+              "num": 89, 
+              "type": "school"
+            }, 
+            {
+              "num": 12, 
+              "type": "school"
+            }
+          ], 
+          "name": "Alex"
+        }
+      </pre>      
+    </td>
+  </tr>
+</table>
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input: </strong> Format string. 
+    <strong>Input:</strong> Format string. 
 </p>
 
 <p>
-    <strong>Output: </strong> An object. 
+    <strong>Output:</strong> An object ({% if is_js %}array/object{% else %}list/dictionary{% endif %}). 
 </p>
-
-
 <!-- Give some usage examples -->
 <div class="for_info_only">
     <p>
-        <strong>Example:</strong>
+        <strong>Examples:</strong>
     </p>
-
-{% if interpreter.slug == "js-node" %}
-<pre class="brush: javascript">yaml('- Alex\n'
-+ '-\n'
-+ '  - odessa\n'
-+ '  - dnipro\n'
-+ '- Li') == ['Alex', ['odessa', 'dnipro'], 'Li']
-yaml('- 67\n'
-+ '-\n'
-+ '  name: Irv\n'
-+ '  game: Mario\n'
-+ '-\n'
-+ '- 56') == [67,
- {'game': 'Mario', 'name': 'Irv'},
- null,
- 56]
-</pre>
-{% else %}
-<pre class="brush: python">yaml('- Alex\n'
- '-\n'
- '  - odessa\n'
- '  - dnipro\n'
- '- Li') == ['Alex', ['odessa', 'dnipro'], 'Li']
-yaml('- 67\n'
- '-\n'
- '  name: Irv\n'
- '  game: Mario\n'
- '-\n'
- '- 56') == [67,
- {'game': 'Mario', 'name': 'Irv'},
- None,
- 56]
-</pre>
-{% endif %}
+  <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
 
 
