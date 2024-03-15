@@ -1,0 +1,188 @@
+<!-- Describe task in general -->
+
+<p>Die 4. Aufgabe in der Reihe der Missionen über das YAML-Format wird einer komplexen Struktur gewidmet sein.</p>
+
+<table>
+  <tr>
+    <th>YAML</th>
+    <th>Python/TypeScript</th>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p>{% if is_js %}Ein Array{% else %}Ein Element einer Liste{% endif %} kann ein weiteres {% if is_js %}Array{% else %}Liste{% endif %} sein.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>
+        - Alex
+        -
+          - odessa
+          - dnipro
+        - Li
+      </pre>
+    </td>
+    <td>
+      <pre class="brush: python">
+        [
+          "Alex", 
+          [
+            "odessa", 
+            "dnipro"
+          ], 
+          "Li"
+        ]
+        </pre>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p>{% if is_js %}Ein Objekt{% else %}Ein Wörterbuch{% endif %} kann auch ein Element eines {% if is_js %}array{% else %}list{% endif %} sein.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>
+        - 67
+        -
+          name: Irv
+          game: Mario
+        -
+        - 56
+      </pre>
+    </td>
+    <td>
+      <pre class="brush: python">
+        [
+          67, 
+          {
+            "game": "Mario", 
+            "name": "Irv"
+          }, 
+          None/null, 
+          56
+        ]
+      </pre>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p>{% if is_js %}Ein Objekt{% else %}Ein Wörterbuch{% endif %} Element kann ein anderes {% if is_js %}Objekt{% else %}Wörterbuch{% endif %} sein.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>
+        name: Alex
+        study:
+          type: school
+          number: 78
+        age: 14
+      </pre>
+    </td>
+    <td>
+      <pre class="brush: python">
+        {
+          "age": 14, 
+          "study": {
+            "type": "school", 
+            "number": 78
+          }, 
+          "name": "Alex"
+        }
+      </pre>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p>{% if is_js %}Ein Array{% else %}Eine Liste{% endif %} kann auch ein Element eines {% if is_js %}Objekts{% else %}Wörterbuchs{% endif %} sein.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>
+        name: Alex
+        study:
+          - 89
+          - 89
+          - "Hell"
+        age: 14
+      </pre>
+    </td>
+    <td>
+      <pre class="brush: python">
+        {
+          "age": 14, 
+          "study": [
+            89, 
+            89, 
+            "Hell"
+          ], 
+          "name": "Alex"
+        }
+      </pre>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p>Und natürlich können die Daten mehr als eine Verschachtelungsebene haben.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>
+        name: Alex
+        study:
+          -
+            type: school
+            num: 89
+          -
+            type: school
+            num: 12
+        age: 14
+      </pre>
+    </td>
+    <td>
+      <pre class="brush: python">
+        {
+          "age": 14, 
+          "study": [
+            {
+              "num": 89, 
+              "type": "school"
+            }, 
+            {
+              "num": 12, 
+              "type": "school"
+            }
+          ], 
+          "name": "Alex"
+        }
+      </pre>      
+    </td>
+  </tr>
+</table>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Eingabe:</strong> Zeichenkette formatieren. 
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> Ein Objekt ({% if is_js %}array/object{% else %}list/dictionary{% endif %}). 
+</p>
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Beispiele:</strong>
+    </p>
+  <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<p>
+    <strong>Vorbedingung:</strong>
+    <i>Es wird der YAML 1.2 Standard verwendet.</i>
+</p>
